@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SPOT ON Hotel Rosewood"
+description = "A polished, responsive hotel website for SPOT ON Hotel Rosewood in Risali, Bhilai, with verified property information, enquiry flow, gallery, amenities, and directions."
+version = "1.0.0"
+id = "artifacts/hotel-rosewood"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25394
+
+[services.development]
+run = "pnpm --filter @workspace/hotel-rosewood run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hotel-rosewood", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hotel-rosewood/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25394"
+BASE_PATH = "/"

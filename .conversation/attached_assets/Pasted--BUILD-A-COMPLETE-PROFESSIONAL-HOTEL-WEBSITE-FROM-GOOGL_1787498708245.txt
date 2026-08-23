@@ -1,0 +1,991 @@
+# BUILD A COMPLETE PROFESSIONAL HOTEL WEBSITE FROM GOOGLE MAPS REFERENCE
+
+You are an autonomous senior frontend engineer, UI/UX designer, web researcher, visual designer, and QA engineer.
+
+Your job is to research the hotel from the Google Maps link I provide, identify the exact property, find its REAL publicly available photographs and verified information, and then build a complete professional frontend website for that exact hotel.
+
+I am giving you ONLY the Google Maps link.
+
+You must do the research and implementation yourself.
+
+Do NOT ask me to provide the hotel name, images, address, amenities, room information, or design direction unless something is genuinely impossible to determine.
+
+---
+
+# GOOGLE MAPS REFERENCE
+
+https://maps.app.goo.gl/yaCxdqNXu1PyiiGM6
+
+This link points to the hotel/property that the website must represent.
+
+FIRST, open/research this location and determine:
+
+* exact hotel name
+* exact address
+* city
+* state
+* PIN code
+* nearby landmarks
+* Google Maps location
+* available public contact information
+* publicly listed hotel information
+
+Do NOT start coding before identifying the actual property.
+
+---
+
+# CRITICAL REQUIREMENT — THIS MUST BE THE REAL HOTEL
+
+The website must represent the EXACT hotel found from the Google Maps link.
+
+Do NOT create a generic hotel website.
+
+Do NOT use random luxury hotel images.
+
+Do NOT use images from another hotel.
+
+Do NOT generate fake hotel photographs.
+
+Do NOT replace the actual property with an imaginary resort.
+
+The final website must visually and factually represent the actual hotel.
+
+---
+
+# STEP 1 — RESEARCH THE HOTEL
+
+After identifying the hotel through Google Maps, independently search the web.
+
+Search multiple sources.
+
+Use queries similar to:
+
+"[EXACT HOTEL NAME]"
+
+"[EXACT HOTEL NAME] [CITY]"
+
+"[EXACT HOTEL NAME] images"
+
+"[EXACT HOTEL NAME] rooms"
+
+"[EXACT HOTEL NAME] photos"
+
+"[EXACT HOTEL NAME] exterior"
+
+"[EXACT HOTEL NAME] reception"
+
+"[EXACT HOTEL NAME] lobby"
+
+"[EXACT HOTEL NAME] booking"
+
+"[EXACT HOTEL NAME] Agoda"
+
+"[EXACT HOTEL NAME] Booking.com"
+
+"[EXACT HOTEL NAME] MakeMyTrip"
+
+"[EXACT HOTEL NAME] OYO"
+
+"[EXACT HOTEL NAME] TripAdvisor"
+
+Use legitimate publicly available sources.
+
+Prioritize:
+
+1. Google Maps
+2. Official hotel/property pages if available
+3. OYO
+4. Booking.com
+5. Agoda
+6. MakeMyTrip
+7. TripAdvisor
+8. Other reputable travel/property listings
+
+Cross-check information between sources.
+
+---
+
+# STEP 2 — FIND REAL HOTEL IMAGES
+
+This is extremely important.
+
+Find actual photographs belonging to THIS EXACT HOTEL.
+
+Look specifically for:
+
+* exterior
+* building
+* entrance
+* reception
+* lobby
+* rooms
+* beds
+* bathrooms
+* seating areas
+* restaurant
+* common areas
+* other property photos
+
+Use image search/web research to find the best available photographs.
+
+Before using an image, verify that it belongs to the same property.
+
+Look for matching:
+
+* building architecture
+* room design
+* furniture
+* hotel name
+* signage
+* interior layout
+* location/property identity
+
+Do NOT use generic stock hotel images.
+
+If there are 20 real images available, use the best 10–15 rather than inventing additional imagery.
+
+---
+
+# STEP 3 — DOWNLOAD/STORE REAL IMAGES
+
+When technically and legally appropriate, save the discovered public images into the project.
+
+Organize them clearly:
+
+public/
+images/
+hotel/
+exterior/
+rooms/
+reception/
+gallery/
+
+Use meaningful filenames such as:
+
+hotel-exterior.jpg
+hotel-entrance.jpg
+room-01.jpg
+room-02.jpg
+reception.jpg
+lobby.jpg
+
+Optimize large images for web performance.
+
+Do not create unnecessary duplicate images.
+
+If an image cannot be downloaded because the source prevents it, use an appropriate publicly accessible source URL only when technically reliable.
+
+Never use an unrelated replacement image.
+
+---
+
+# STEP 4 — VERIFY HOTEL INFORMATION
+
+Create a small internal research/data structure containing verified information.
+
+For example:
+
+hotelData = {
+name,
+address,
+city,
+state,
+pincode,
+description,
+amenities,
+roomTypes,
+checkIn,
+checkOut,
+phone,
+email,
+mapUrl,
+bookingUrls
+}
+
+Only include information that can be verified.
+
+IMPORTANT:
+
+Never hallucinate:
+
+* number of rooms
+* hotel rating
+* star category
+* prices
+* phone number
+* email
+* facilities
+* restaurant
+* breakfast
+* parking
+* swimming pool
+* gym
+* spa
+* conference hall
+* airport shuttle
+* room categories
+
+If a detail is not verified, omit it.
+
+---
+
+# STEP 5 — INSPECT THE REPLIT PROJECT
+
+Before implementation:
+
+1. Inspect the current repository.
+2. Inspect package.json.
+3. Identify the existing framework.
+4. Check existing source files.
+5. Check existing assets.
+6. Reuse the existing setup if possible.
+
+If the project is empty, create a modern frontend using:
+
+* React
+* Vite
+* Tailwind CSS
+* Lucide React
+
+Do NOT add unnecessary backend infrastructure.
+
+This project is FRONTEND ONLY.
+
+---
+
+# WEBSITE OBJECTIVE
+
+Create a premium, modern, trustworthy hotel website that feels like the hotel's real official website.
+
+A visitor should immediately understand:
+
+* what hotel this is
+* where it is
+* what the rooms look like
+* what amenities are available
+* what the property looks like
+* how to contact it
+* where it is located
+* how to enquire/book
+
+The design must be specific to this hotel.
+
+---
+
+# DESIGN STYLE
+
+Analyze the real hotel's visual identity before choosing the design.
+
+Use the hotel's actual:
+
+* architecture
+* colors
+* signage
+* room interiors
+* surroundings
+* branding
+
+as the visual inspiration.
+
+Do not blindly use a generic "luxury hotel" template.
+
+The website should feel:
+
+* elegant
+* modern
+* welcoming
+* trustworthy
+* photographic
+* premium
+* clean
+* professional
+
+But it should still accurately represent the actual property.
+
+---
+
+# PAGE STRUCTURE
+
+Build a polished single-page hotel website with:
+
+1. Header
+2. Hero
+3. Booking/Enquiry Bar
+4. About Hotel
+5. Rooms
+6. Amenities
+7. Experience/Highlights
+8. Gallery
+9. Location
+10. Nearby Places
+11. FAQ
+12. Contact/Booking CTA
+13. Footer
+
+If research shows that a section is inappropriate for this particular hotel, omit it rather than inventing information.
+
+---
+
+# HEADER
+
+Create a sticky responsive header.
+
+Include:
+
+* hotel logo/wordmark
+* Home
+* About
+* Rooms
+* Amenities
+* Gallery
+* Location
+* Contact
+* Book/Enquire CTA
+
+Desktop navigation should be elegant.
+
+Mobile should have:
+
+* logo
+* hamburger menu
+* smooth mobile navigation
+
+On scroll, the header should transition subtly into a stronger background.
+
+---
+
+# HERO SECTION
+
+Use the BEST REAL IMAGE OF THE ACTUAL HOTEL.
+
+Prefer:
+
+1. high-quality exterior image
+2. professional room image
+3. strongest real property photograph
+
+Hero should have:
+
+Small label:
+
+WELCOME TO [HOTEL NAME]
+
+Large headline based on the hotel's actual positioning.
+
+Example style:
+
+"Comfortable Stays in [CITY]"
+
+But create the final copy yourself based on research.
+
+Include:
+
+* location
+* short hotel description
+* primary CTA: "Book Your Stay"
+* secondary CTA: "Explore Rooms"
+
+Use a sophisticated dark gradient over the image for readability.
+
+Do NOT hide the hotel's actual appearance.
+
+The hotel should be visually recognizable.
+
+---
+
+# BOOKING / ENQUIRY BAR
+
+Create a beautiful booking interface.
+
+Fields:
+
+* Check-in
+* Check-out
+* Guests
+* Rooms
+
+CTA:
+
+Check Availability
+
+Because this is frontend-only:
+
+DO NOT pretend there is a working booking backend.
+
+Instead:
+
+* validate fields
+* show a polished enquiry/availability state
+* provide booking/contact options
+* make the component ready for future backend integration
+
+---
+
+# ABOUT SECTION
+
+Create a premium split-screen section.
+
+LEFT:
+
+Large REAL hotel photograph.
+
+RIGHT:
+
+Small eyebrow:
+
+ABOUT [HOTEL NAME]
+
+Heading describing the property.
+
+Write the description from verified information.
+
+Mention:
+
+* location
+* type of accommodation
+* verified facilities
+* guest experience
+
+Do not exaggerate.
+
+Do not call it a luxury resort unless the research supports that.
+
+---
+
+# ROOMS SECTION
+
+Research the actual available room types.
+
+Only show verified room categories.
+
+For every room card include:
+
+* real room image
+* room name
+* short description
+* verified amenities
+* relevant occupancy information if verified
+
+Example:
+
+CLASSIC TRIPLE ROOM
+
+But only use this if research confirms it.
+
+Buttons:
+
+View Room
+
+Enquire Now
+
+If only one room type can be verified, create one excellent room showcase instead of fake multiple categories.
+
+---
+
+# AMENITIES
+
+Create a clean icon grid.
+
+Use only verified amenities.
+
+Potential examples:
+
+* Free Wi-Fi
+* Air Conditioning
+* TV
+* Private Bathroom
+* Room Service
+* Restaurant
+* Family Rooms
+* 24-Hour Front Desk
+* Geyser
+* Housekeeping
+* Power Backup
+* Luggage Storage
+
+ONLY display amenities confirmed through research.
+
+Use Lucide icons.
+
+---
+
+# EXPERIENCE / HIGHLIGHTS
+
+Create a visually rich section using REAL hotel imagery.
+
+Possible themes:
+
+"Designed for a Comfortable Stay"
+
+"Conveniently Located"
+
+"Everything You Need for a Relaxed Stay"
+
+Create 2–4 highlight cards based on actual verified information.
+
+Do not invent services.
+
+---
+
+# GALLERY
+
+This should be one of the strongest sections.
+
+Create a high-quality responsive image gallery using REAL photographs of this hotel.
+
+Include categories such as:
+
+* All
+* Exterior
+* Rooms
+* Reception
+* Interiors
+
+Only show categories if corresponding real images exist.
+
+Implement:
+
+* masonry/grid layout
+* hover animation
+* fullscreen lightbox
+* next/previous
+* ESC close
+* responsive behavior
+* lazy loading
+
+Make the gallery visually impressive.
+
+---
+
+# LOCATION
+
+Create a strong location section.
+
+Show:
+
+HOTEL NAME
+
+Exact verified address.
+
+Include:
+
+"Get Directions"
+
+button.
+
+The button must open the SAME Google Maps property/location used for the research.
+
+If possible, embed a map using the Google Maps URL or an appropriate map representation.
+
+Do not invent coordinates.
+
+---
+
+# NEARBY PLACES
+
+Research genuinely nearby landmarks and useful locations.
+
+Potential categories:
+
+* railway stations
+* hospitals
+* colleges
+* shopping areas
+* tourist attractions
+* important local landmarks
+
+Only include places and distances that can be verified.
+
+If exact travel time is uncertain, do not display it.
+
+---
+
+# FAQ
+
+Create a concise FAQ section.
+
+Only include answers based on verified information.
+
+Possible questions:
+
+* Where is the hotel located?
+* What time is check-in?
+* What time is check-out?
+* Does the hotel provide Wi-Fi?
+* Does the hotel have air-conditioned rooms?
+* Is room service available?
+* Does the hotel have a restaurant?
+* How can I contact/book the hotel?
+
+If an answer cannot be verified, don't invent one.
+
+---
+
+# CONTACT / BOOKING CTA
+
+Create a strong final CTA.
+
+Example:
+
+"Plan Your Stay"
+
+"Ready for a comfortable stay in [CITY]?"
+
+Buttons:
+
+Book Your Stay
+
+Get Directions
+
+Call Hotel
+
+Only show Call Hotel if a verified phone number exists.
+
+Do not invent phone numbers.
+
+---
+
+# FOOTER
+
+Include:
+
+* hotel name
+* short description
+* navigation
+* address
+* verified contact details
+* Google Maps link
+* booking links if verified
+* copyright
+
+Do not create fake social media accounts.
+
+Do not create fake email addresses.
+
+---
+
+# BOOKING FLOW
+
+Create a frontend-only enquiry modal.
+
+Fields:
+
+* Name
+* Phone
+* Check-in
+* Check-out
+* Guests
+* Message
+
+CTA:
+
+Send Enquiry
+
+For now show:
+
+"Your enquiry has been prepared. Please contact the hotel to confirm availability."
+
+Do not fake a real reservation.
+
+---
+
+# VISUAL QUALITY
+
+This must NOT look like a simple AI-generated template.
+
+Pay special attention to:
+
+* typography
+* spacing
+* image quality
+* hierarchy
+* whitespace
+* button design
+* section transitions
+* card design
+* responsive image crops
+* subtle animations
+
+Use a restrained animation system.
+
+Possible effects:
+
+* fade-up reveal
+* image zoom on hover
+* smooth scrolling
+* subtle card movement
+* navbar transition
+* gallery transitions
+
+Avoid:
+
+* excessive bouncing
+* flashy gradients
+* unnecessary 3D effects
+* excessive glassmorphism
+* huge animations
+
+---
+
+# RESPONSIVE DESIGN
+
+Perfectly support:
+
+320px
+375px
+390px
+430px
+768px
+1024px
+1280px
+1440px
+1920px
+
+Especially test:
+
+* mobile navbar
+* hero text
+* booking bar
+* gallery
+* room cards
+* buttons
+* footer
+* modal
+
+Mobile must be intentionally designed, not just scaled down.
+
+---
+
+# SEO
+
+Implement:
+
+Title:
+
+[Hotel Name] | [City]
+
+Meta description:
+
+Create a factual description based on the researched property.
+
+Use:
+
+* semantic HTML
+* one H1
+* proper H2/H3 hierarchy
+* image alt text
+* Open Graph metadata
+* favicon if possible
+
+---
+
+# PERFORMANCE
+
+Optimize everything.
+
+Requirements:
+
+* lazy-load gallery images
+* optimize images
+* avoid huge JavaScript bundles
+* avoid unnecessary packages
+* use semantic HTML
+* no console errors
+* no broken image links
+* no broken navigation
+* responsive images where appropriate
+
+---
+
+# ACCESSIBILITY
+
+Implement:
+
+* keyboard navigation
+* focus states
+* proper labels
+* alt text
+* accessible buttons
+* accessible mobile menu
+* accessible modal
+* ESC-to-close modal
+* adequate color contrast
+
+---
+
+# IMPORTANT IMAGE RULE
+
+REAL HOTEL PHOTOS ARE MORE IMPORTANT THAN DESIGN.
+
+If there is a choice between:
+
+beautiful generic image
+
+vs.
+
+slightly lower-quality REAL hotel image
+
+choose the REAL hotel image.
+
+The website's purpose is to represent the actual property.
+
+Never substitute another hotel.
+
+Never generate fake room photographs.
+
+Never use an image simply because the image search result "looks like" the hotel.
+
+Verify the property identity first.
+
+---
+
+# IMPORTANT RESEARCH RULE
+
+If multiple websites provide conflicting information:
+
+1. Google Maps/property source
+2. Official property source
+3. Major booking platforms
+4. Other reputable sources
+
+Cross-check before displaying information.
+
+Do not blindly trust a single listing.
+
+---
+
+# IMPORTANT COPYRIGHT / SOURCE RULE
+
+Use publicly accessible images appropriately.
+
+Where possible, prefer official/property-provided images or images from legitimate public hotel listings.
+
+Do not scrape private content.
+
+Do not bypass login/paywalls/access restrictions.
+
+Do not download content from restricted/private sources.
+
+If an image cannot appropriately be used locally, choose another legitimate image source.
+
+---
+
+# CODE ARCHITECTURE
+
+Keep code clean.
+
+Recommended structure:
+
+src/
+components/
+Header
+Hero
+BookingBar
+About
+Rooms
+Amenities
+Highlights
+Gallery
+Location
+Nearby
+FAQ
+Contact
+BookingModal
+Footer
+
+data/
+hotelData
+
+assets/
+
+App
+
+Use reusable components.
+
+Do not create one giant App component.
+
+---
+
+# FINAL TESTING
+
+After building the website:
+
+1. Start the app.
+2. Open it in the browser.
+3. Inspect the rendered website.
+4. Check every section.
+5. Check mobile.
+6. Check desktop.
+7. Test navigation.
+8. Test mobile menu.
+9. Test booking modal.
+10. Test form validation.
+11. Test gallery.
+12. Test lightbox.
+13. Test map link.
+14. Check all images.
+15. Check console.
+16. Fix every error.
+17. Improve spacing.
+18. Improve typography.
+19. Improve image crops.
+20. Perform a final visual polish pass.
+
+Do not stop when the application merely compiles.
+
+The final result must actually LOOK professional.
+
+---
+
+# AUTONOMOUS EXECUTION
+
+Do the entire process yourself.
+
+DO NOT repeatedly ask me:
+
+"Which images should I use?"
+
+"Which colors should I use?"
+
+"What sections should I create?"
+
+"What's the hotel address?"
+
+"What room should I add?"
+
+"Should I use this image?"
+
+Research it yourself.
+
+Make professional decisions yourself.
+
+Only ask me if something requires information that genuinely cannot be discovered publicly.
+
+---
+
+# FINAL REQUIREMENT
+
+When you finish, provide a short completion report containing:
+
+1. Exact hotel identified
+2. Research sources used
+3. Number of real hotel images used
+4. Main website sections created
+5. Technologies used
+6. Any information that could not be verified
+7. How to preview/run the website
+8. Any remaining optional improvements
+
+MOST IMPORTANT:
+
+DO NOT JUST GIVE ME A PLAN.
+
+DO NOT JUST EXPLAIN THE CODE.
+
+DO NOT STOP AFTER CREATING A BASIC TEMPLATE.
+
+ACTUALLY BUILD THE COMPLETE WEBSITE IN THIS REPLIT PROJECT.
+
+RESEARCH → VERIFY → COLLECT REAL IMAGES → DESIGN → BUILD → RUN → TEST → FIX → POLISH.
+
+The final website should look like a professional website made specifically for the actual hotel represented by the Google Maps link.

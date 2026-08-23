@@ -1,0 +1,1 @@
+- [Hotel research integrity](hotel-research.md) — keep the Rosewood Bhilai site honest when public listings mix properties or lack verified imagery.
