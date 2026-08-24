@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@11.1.3 --activate
 
-COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
+COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.base.json ./
 COPY artifacts/hotel-rosewood/package.json artifacts/hotel-rosewood/package.json
 COPY lib/api-client-react/package.json lib/api-client-react/package.json
 
