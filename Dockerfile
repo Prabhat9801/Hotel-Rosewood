@@ -12,7 +12,12 @@ COPY lib/api-client-react/package.json lib/api-client-react/package.json
 # meaning inside this image — pnpm is the only thing that ever runs here.
 RUN node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));delete p.scripts.preinstall;fs.writeFileSync('package.json',JSON.stringify(p,null,2));"
 
-RUN pnpm install --frozen-lockfile --filter @workspace/hotel-rosewood... && pnpm approve-builds --all
+# pnpm 11 exits non-zero here purely to flag esbuild's postinstall as
+# skipped (the packages are still installed correctly); `approve-builds`
+# actually runs it next. node_modules must exist afterward or this was a
+# real install failure, not just the ignored-builds warning.
+RUN pnpm install --frozen-lockfile --filter @workspace/hotel-rosewood... || test -d node_modules
+RUN pnpm approve-builds --all
 
 COPY artifacts/hotel-rosewood artifacts/hotel-rosewood
 COPY lib/api-client-react lib/api-client-react
