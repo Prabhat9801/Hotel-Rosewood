@@ -10,6 +10,11 @@ COPY pnpm-workspace.yaml pnpm-lock.yaml package.json ./
 COPY artifacts/hotel-rosewood/package.json artifacts/hotel-rosewood/package.json
 COPY lib/api-client-react/package.json lib/api-client-react/package.json
 
+# The workspace's own `preinstall` script re-checks npm_config_user_agent
+# itself (guarding against accidental `npm install`), but that var doesn't
+# reliably reach the nested `sh -c` it runs in here even though pnpm is the
+# one invoking it. Set it explicitly so the guard sees what's really running.
+ENV npm_config_user_agent="pnpm/11.1.3"
 RUN pnpm install --frozen-lockfile --filter @workspace/hotel-rosewood...
 
 COPY artifacts/hotel-rosewood artifacts/hotel-rosewood
