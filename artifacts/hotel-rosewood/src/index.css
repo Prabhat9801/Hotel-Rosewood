@@ -86,39 +86,156 @@
   .font-mono-ui { font-family: var(--app-font-mono); }
 }
 
-.rosewood-page { background: #f3eee5; overflow: hidden; }
+/* overflow-x only: `overflow:hidden` here would break the fixed header
+   and make the reveal observer fire against the wrong scroll root. */
+.rosewood-page { background: var(--rw-cream); overflow-x: clip; }
 .noise-layer {
   position: fixed; inset: 0; pointer-events: none; z-index: 30; opacity: .055;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
 }
-.hero-wash { background: linear-gradient(125deg, rgba(37,38,35,.76), rgba(37,38,35,.12) 68%), linear-gradient(35deg, #79877a, #c77b60 48%, #dda260); }
-.hero-architecture { position:absolute; inset: 19% 7% 0 47%; opacity:.72; }
-.hero-architecture::before, .hero-architecture::after { content:""; position:absolute; bottom:0; background:#eadbc3; }
-.hero-architecture::before { width:58%; height:70%; left:14%; clip-path:polygon(12% 0, 86% 0, 100% 15%, 100% 100%, 0 100%, 0 15%); }
-.hero-architecture::after { width:37%; height:51%; right:0; clip-path:polygon(0 18%, 23% 0, 100% 0, 100% 100%, 0 100%); background:#d5ad83; }
-.hero-window { position:absolute; z-index:2; width:8%; height:15%; border:7px solid #5a5c4e; background:#d68b68; box-shadow: inset 0 0 0 3px rgba(243,238,229,.35); }
-.hero-window:nth-child(1) { left:26%; bottom:31%; }.hero-window:nth-child(2) { left:42%; bottom:31%; }.hero-window:nth-child(3) { left:26%; bottom:12%; }.hero-window:nth-child(4) { left:42%; bottom:12%; }
-.eyebrow { font-family:var(--app-font-mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; }
+.eyebrow { font-family:var(--app-font-mono); font-size:.74rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
 .section-number { font-family:var(--app-font-mono); color:#bd604a; font-size:.7rem; letter-spacing:.1em; }
 .reveal { animation: rise-in .85s cubic-bezier(.22,.8,.24,1) both; }
-.reveal-delay-1 { animation-delay:.12s; }.reveal-delay-2 { animation-delay:.23s; }.reveal-delay-3 { animation-delay:.36s; }
+.reveal-delay-1 { animation-delay:.12s; }.reveal-delay-2 { animation-delay:.24s; }
+.reveal-delay-3 { animation-delay:.38s; }.reveal-delay-4 { animation-delay:.52s; }
 @keyframes rise-in { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
 .editorial-rule { height:1px; background:#cfc3b3; }
 .shape-card { transition: transform .45s cubic-bezier(.22,.8,.24,1), box-shadow .45s ease; }
 .shape-card:hover { transform: translateY(-7px) rotate(-.4deg); box-shadow: 0 22px 35px rgba(70,52,39,.14); }
-.photo-tile { position:relative; overflow:hidden; }
-.photo-tile::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg, transparent 44%, rgba(255,224,174,.18)); pointer-events:none; }
-.tile-a { background: linear-gradient(145deg,#bd6b55 0 40%,#e2aa76 40% 65%,#758277 65%); }
-.tile-b { background: linear-gradient(35deg,#6e7d72 0 38%,#c98167 38% 63%,#e7c496 63%); }
-.tile-c { background: linear-gradient(160deg,#e4bc8b 0 45%,#8a927d 45% 76%,#ba6754 76%); }
-.tile-d { background: linear-gradient(130deg,#a2a991 0 34%,#d2775c 34% 67%,#e8d0ad 67%); }
-.gallery-mark { position:absolute; inset:auto 1.5rem 1.3rem; color:#f3eee5; mix-blend-mode:screen; font-family:var(--app-font-serif); font-size:clamp(1.6rem,3vw,3rem); line-height:.88; }
+.photo-tile { position:relative; overflow:hidden; border-radius:.25rem; }
+/* Keeps the hero photograph readable under white type without burying it. */
+.hero-scrim { background:
+  linear-gradient(100deg, rgba(24,25,22,.86) 0%, rgba(24,25,22,.55) 38%, rgba(24,25,22,.14) 72%),
+  linear-gradient(to top, rgba(24,25,22,.80) 4%, rgba(24,25,22,.20) 42%, transparent 62%); }
 .input-field { width:100%; border:0; border-bottom:1px solid #aa9e90; background:transparent; padding:.72rem 0; outline: none; color:#252625; }
 .input-field:focus { border-color:#bd604a; box-shadow:0 1px 0 #bd604a; }
 .modal-backdrop { animation: fade-in .25s ease both; }.modal-sheet { animation: sheet-in .35s cubic-bezier(.22,.8,.24,1) both; }
 @keyframes fade-in { from { opacity:0; } to { opacity:1; } } @keyframes sheet-in { from { opacity:0; transform:translateY(18px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
-@media (max-width: 767px) {
-  .hero-architecture { inset: 48% -8% 0 35%; opacity:.6; }
-  .hero-window { border-width:4px; }
-  .gallery-mark { inset:auto 1rem .9rem; font-size:1.45rem; }
+/* ---- Palette -------------------------------------------------------- */
+:root {
+  --rw-cream:   #f5f1e8;  /* lightest ground */
+  --rw-sand:    #e9dcc9;  /* warm mid ground */
+  --rw-clay:    #ddc5aa;  /* deeper warm ground */
+  --rw-sage:    #66776b;  /* green ground */
+  --rw-sage-dk: #4f5f55;  /* green, deeper for gradient */
+  --rw-ink:     #24251f;  /* near-black */
+  --rw-terra:   #a34a31;  /* primary accent */
+  --rw-gold:    #f0c38e;  /* highlight on dark */
+  --rw-stone:   #4f463d;  /* body text on light */
 }
+
+/* ---- Scroll reveal -------------------------------------------------- */
+/* Hidden only once JS has armed the observer (`js-reveal` on <html>), so a
+   failed script, a crawler, or a print render still shows every block. */
+.rv { transition: opacity .75s cubic-bezier(.22,.8,.24,1), transform .75s cubic-bezier(.22,.8,.24,1); }
+.js-reveal .rv { opacity: 0; transform: translateY(26px); will-change: opacity, transform; }
+.js-reveal .rv-in, .rv-in { opacity: 1; transform: none; }
+.rv-1 { transition-delay: .07s; } .rv-2 { transition-delay: .14s; } .rv-3 { transition-delay: .21s; }
+.rv-4 { transition-delay: .28s; } .rv-5 { transition-delay: .35s; }
+
+/* Image reveal: a slow settle from slightly scaled-up. */
+.rv-img img { transition: transform 1.25s cubic-bezier(.22,.8,.24,1); }
+.js-reveal .rv-img img { transform: scale(1.07); }
+.js-reveal .rv-img.rv-in img, .rv-img.rv-in img { transform: scale(1); }
+
+/* A rule that draws itself in as the section arrives. */
+.rule-draw { transform-origin: left; transition: transform .9s cubic-bezier(.22,.8,.24,1); }
+.js-reveal .rule-draw { transform: scaleX(0); }
+.rv-in .rule-draw, .rule-draw.rv-in { transform: scaleX(1); }
+
+/* Very slow drift keeps the hero photograph feeling alive without
+   competing with the copy. Paused entirely for reduced-motion users. */
+.hero-photo { animation: hero-drift 26s ease-in-out infinite alternate; }
+@keyframes hero-drift { from { transform: scale(1.02); } to { transform: scale(1.09); } }
+
+/* ---- Section grounds ----------------------------------------------- */
+/* Subtle vertical shift keeps adjacent light sections from reading flat. */
+.ground-cream { background: linear-gradient(180deg, #f6f2ea, #f1ece1); }
+.ground-sand  { background: linear-gradient(180deg, #ecdfcd, #e4d4bd); }
+.ground-clay  { background: linear-gradient(180deg, #e0c9af, #d5bb9d); }
+.ground-sage  { background: linear-gradient(165deg, #6d7e71, #536358); }
+.ground-terra { background: linear-gradient(150deg, #c0603f, #a94b36 62%, #9d4531); }
+
+/* ---- Cards ---------------------------------------------------------- */
+.amenity-card {
+  position: relative; background: #f8f5ee; border: 1px solid rgba(36,37,31,.07);
+  border-radius: .7rem; box-shadow: 0 1px 2px rgba(70,52,39,.05);
+  transition: transform .4s cubic-bezier(.22,.8,.24,1), box-shadow .4s ease, border-color .4s ease;
+  overflow: hidden;
+}
+.amenity-card::before {
+  content: ""; position: absolute; inset: 0 auto auto 0; height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--rw-terra), var(--rw-gold));
+  transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.22,.8,.24,1);
+}
+.amenity-card:hover { transform: translateY(-6px); box-shadow: 0 18px 34px rgba(70,52,39,.13); border-color: rgba(184,89,63,.28); }
+.amenity-card:hover::before { transform: scaleX(1); }
+.amenity-icon { transition: transform .4s cubic-bezier(.22,.8,.24,1), color .3s ease; }
+.amenity-card:hover .amenity-icon { transform: translateY(-2px) scale(1.1); }
+
+/* ---- Filter chips --------------------------------------------------- */
+.chip { transition: background-color .28s ease, color .28s ease, border-color .28s ease, transform .28s ease; }
+.chip:hover { transform: translateY(-2px); }
+
+/* ---- Buttons -------------------------------------------------------- */
+/* Sheen sweeps across the primary CTA on hover. */
+.btn-sheen { position: relative; overflow: hidden; }
+.btn-sheen::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-110%); pointer-events: none;
+  background: linear-gradient(105deg, transparent 28%, rgba(255,255,255,.5), transparent 72%);
+  transition: transform .75s cubic-bezier(.22,.8,.24,1);
+}
+.btn-sheen:hover::after { transform: translateX(110%); }
+
+/* ---- Gallery tiles -------------------------------------------------- */
+.photo-tile { position: relative; overflow: hidden; border-radius: .55rem; }
+.photo-tile::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  box-shadow: inset 0 0 0 2px rgba(240,195,142,.75); border-radius: inherit;
+  transition: opacity .4s ease;
+}
+.photo-tile:hover::after { opacity: 1; }
+
+/* ---- FAQ ------------------------------------------------------------ */
+.faq-row { transition: background-color .3s ease, padding-left .3s ease; }
+.faq-row:hover { background: rgba(184,89,63,.05); }
+.faq-answer { animation: faq-open .38s cubic-bezier(.22,.8,.24,1) both; }
+@keyframes faq-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* ---- Nav ------------------------------------------------------------ */
+/* Underline grows from the left on hover, so the eye tracks the target. */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 100%;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform .35s cubic-bezier(.22,.8,.24,1);
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* Header gains a solid ground once the page scrolls under it. */
+.header-solid { background: rgba(28,29,24,.9); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(243,238,229,.1); }
+.header-shift { transition: background-color .45s ease, backdrop-filter .45s ease, padding .45s ease, box-shadow .45s ease; }
+
+/* Keyboard focus stays visible everywhere. */
+:focus-visible { outline: 2px solid var(--rw-gold); outline-offset: 3px; border-radius: 3px; }
+
+@media (max-width: 767px) {
+  /* Lighter than the desktop wash so the room stays visible on mobile,
+     where the photo sits directly behind the copy. */
+  .hero-scrim { background:
+    linear-gradient(to top, rgba(24,25,22,.90) 6%, rgba(24,25,22,.66) 42%, rgba(24,25,22,.34)); }
+  .shape-card:hover { transform:none; box-shadow:none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .reveal, .modal-backdrop, .modal-sheet, .faq-answer { animation:none; }
+  .shape-card, .photo-tile img, .amenity-card, .chip, .btn-sheen::after, .nav-link::after { transition:none; }
+  .shape-card:hover, .amenity-card:hover, .chip:hover { transform:none; }
+  .hero-photo { animation:none; }
+  .rv, .js-reveal .rv { opacity:1; transform:none; transition:none; }
+  .rv-img img, .js-reveal .rv-img img { transform:none; transition:none; }
+  .rule-draw, .js-reveal .rule-draw { transform:scaleX(1); transition:none; }
+}
+
+img { max-width:100%; }
