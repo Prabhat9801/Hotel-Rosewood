@@ -275,10 +275,19 @@ function Hero({ onEnquire }: { onEnquire: () => void }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[680px] px-5 pb-14 pt-32 text-[#f3eee5] md:min-h-[780px] md:px-10 md:pt-40">
-      {/* Real photograph of the property's Classic Room, held back by a
-          gradient that keeps the room readable rather than hiding it. */}
-      <div className="absolute inset-0 overflow-hidden bg-[#24251f]">
+    <section id="home" className="relative text-[#f3eee5] md:min-h-[780px] md:px-10 md:pb-14 md:pt-40">
+      {/*
+        The source photo is landscape (3:2). On a tall phone viewport,
+        object-cover across the full section height would have to crop away
+        most of its width to fill the box — which cuts the building's own
+        OYO sign out of frame and leaves only a neighbouring shopfront
+        visible. Below md, the photo instead sits in its own aspect-locked
+        block at the top so the whole facade is visible, and the copy flows
+        in normal document order beneath it instead of overlaying it.
+        At md and up there is enough width for the desktop full-bleed
+        treatment, so it reverts to the original absolutely-positioned cover.
+      */}
+      <div className="relative aspect-[3/2] overflow-hidden bg-[#24251f] md:absolute md:inset-0 md:aspect-auto">
         <img
           src={asset(heroImage.src)}
           alt={heroImage.alt}
@@ -286,12 +295,12 @@ function Hero({ onEnquire }: { onEnquire: () => void }) {
           height={1067}
           fetchPriority="high"
           decoding="async"
-          className="hero-photo h-full w-full object-cover object-[68%_42%] md:object-[center_42%]"
+          className="hero-photo h-full w-full object-cover object-center md:object-[center_42%]"
         />
-        <div className="hero-scrim absolute inset-0" />
+        <div className="hero-scrim absolute inset-0 md:static" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[520px] max-w-[1380px] flex-col justify-between">
+      <div className="relative z-10 mx-auto flex max-w-[1380px] flex-col justify-between bg-[#24251f] px-5 pb-14 pt-8 md:min-h-[520px] md:bg-transparent md:px-0 md:pb-0 md:pt-0">
         <div className="max-w-4xl">
           <p className="eyebrow reveal mb-6 flex items-center gap-3">
             <span className="h-px w-10 bg-[#f3eee5]/70" /> {hotel.address.locality} · {hotel.address.city} · {hotel.address.state}
